@@ -1,2 +1,2 @@
 # COVID19
-A OCVID19 Data Tracker
+A COVID19 Data Tracker
