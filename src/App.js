@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import styles from './App.module.css';
-
-import {Cards, Graph, CountryPicker} from './Components';
+import {Cards, Graph, CountryPicker, Header, SwitchTabs} from './Components';
 import {fetchData} from './api/apiCall';
 
 class App extends React.Component {
   state = {
     data: {},
+    country: '',
+    value: 0,
   };
 
   async componentDidMount() {
@@ -15,19 +15,37 @@ class App extends React.Component {
     this.setState({data: data});
   }
 
+  handleCountryChange = async (country) => {
+    const data = await fetchData(country);
+    this.setState({data: data, country: country});
+  }
+
+  onTabSwitch = (event, value) => {
+    this.setState({value});
+  }
+
   render() {
-    const {data} = this.state;
+    const {data, country, value} = this.state;
   
     return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h1>C</h1>
-          <img src={logo} className={styles.logo} alt="logo" />
-          <h1>VID-19</h1>
-        </div>    
-        <Cards data={data} />
-        <CountryPicker />
-        <Graph />
+      <div>
+        <Header />
+        <div className={styles.container}>
+          <Cards data={data} />
+          <SwitchTabs value={value} handleChange={this.onTabSwitch} />
+          {
+            value === 0 ? (
+              <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
+                <CountryPicker handleCountryChange={this.handleCountryChange}/>
+                <Graph data={data} country={country} />
+              </div>
+            ) : (
+              <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
+                <p>Hi</p>
+              </div>
+            )
+          }
+        </div>
       </div>
     );
   }

@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './Cards.module.css';
 import CountUp from 'react-countup';
 import {Card, CardContent, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {cardTypes} from '../../helpers';
 import cx from 'classnames';
+
+import styles from './Cards.module.css';
 
 const useStyles = makeStyles({
     root: {
@@ -35,7 +36,7 @@ const Cards = ({data}) => {
 
     return (
         <div className={styles.container}>
-            <Grid container spacing={3} justify="center">
+            <Grid container spacing={1} justify="center">
                 {
                     cardTypes.map((value, index) => {
                         return (

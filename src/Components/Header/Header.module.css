@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+.container {
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.separator {
+    color: #FE6B8B;
+    font-size: 5vmin;
+    margin: 0 10px;
+    align-self: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-family: 'Caveat', cursive;
+    font-size: 5vmin;
+    margin: 0;
+}
+  
+.logo {
+    height: 7vmin;
+    pointer-events: none;
+}
+
+@media only screen and (max-width: 770px) {
+    .text {
+        font-size: 7vmin;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: logoSpin infinite 20s linear;
+    }
+}
+
+@keyframes logoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}

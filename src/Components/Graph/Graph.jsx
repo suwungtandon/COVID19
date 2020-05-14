@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {fetchDailyData} from '../../api/apiCall';
-import {Line} from 'react-chartjs-2';
+import {Grid, Card, CardContent, Typography} from '@material-ui/core';
+import LineChart from './LineChart';
+import BarChart from './BarChart';
+
 import styles from './Graph.module.css';
 
-const Graph = () => {
+const Graph = ({ data: { confirmed, recovered, deaths }, country }) => {
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
@@ -14,89 +17,43 @@ const Graph = () => {
         callApi();
     }, []);
 
-    const LineChart = (
-        dailyData.length ? (
-            <Line 
-                data={{
-                    labels: dailyData.map(({ date }) => date),
-                    datasets: [{
-                        data: dailyData.map((data) => data.confirmed),
-                        label: 'Infected',
-                        lineTension: 0.1,
-                        fill: true,
-                        backgroundColor: 'rgba(75,192,192,0.4)',
-                        borderColor: 'rgba(75,192,192,1)',
-                        borderCapStyle: 'round',
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: 'round',
-                        pointBorderColor: 'rgba(75,192,192,1)',
-                        pointBackgroundColor: 'rgba(75,192,192,1)',
-                        pointBorderWidth: 1,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        yAxisID: 'y-axis-1',
-                        xAxisID: 'x-axis-1',
-                    }, {
-                        data: dailyData.map((data) => data.deaths),
-                        label: 'Deaths',
-                        lineTension: 0.1,
-                        fill: true,
-                        backgroundColor: 'rgba(225,0,0,0.4)',
-                        borderColor: 'rgba(225,0,0,1)',
-                        borderCapStyle: 'round',
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: 'round',
-                        pointBorderColor: 'rgba(225,0,0,1)',
-                        pointBackgroundColor: 'rgba(225,0,0,1)',
-                        pointBorderWidth: 1,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        yAxisID: 'y-axis-1',
-                        xAxisID: 'x-axis-1',
-                    },
-                    ],
-                    }}
-                    redraw
-                    height={300}
-                    width={500}
-                    options={
-                    {
-                        maintainAspectRatio: false,
-                        hover: true,
-                        responsive: true,
-                        tooltips: {
-                        mode: 'single',
-                        },
-                        scales: {
-                        xAxes: [
-                            {
-                            id: 'x-axis-1',
-                            display: 'auto',
-                            gridLines: {
-                                display: false,
-                            },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                            display: 'auto',
-                            id: 'y-axis-1',
-                            gridLines: {
-                                display: true,
-                            },
-                            },
-                        ],
-                        },
-                }}
-            />
-        ) : null
-    );
-
     return (
         <div className={styles.container}>
-            {LineChart}
+            <Grid container justify="center" spacing={3}>
+                <Grid item component={Card} xs={12} md={4} className={styles.card}>
+                    {country ? (
+                        <BarChart 
+                            confirmed={confirmed} 
+                            recovered={recovered} 
+                            deaths={deaths} 
+                            country={country} 
+                        />
+                    ) : (
+                        <LineChart 
+                            dailyData={dailyData} 
+                            type='confirmed' 
+                            label='Infected' 
+                            primaryColor='#1CABD140' 
+                            secondaryColor='#1CABD1' 
+                        />
+                    )}
+                </Grid>
+                <Grid item component={Card} xs={12} md={4} className={styles.card}>
+                {country ? (
+                    <CardContent>
+                        <Typography variant="h5" component="h2">{`Latest Updates in ${country}`}</Typography>
+                    </CardContent>
+                    ) : (
+                        <LineChart 
+                            dailyData={dailyData} 
+                            type='deaths' 
+                            label='Deaths' 
+                            primaryColor='#FE6B8B40' 
+                            secondaryColor='#FE6B8B' 
+                        />
+                    )}
+                </Grid>
+            </Grid>
         </div>
     );
 }

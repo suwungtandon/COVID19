@@ -1,11 +1,12 @@
 .container {
     display: flex;
     width: 100%;
-    margin: 50px 0;
-  }
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
   
 .card {
-    margin: 0 2% !important;
+    margin: 0 1% !important;
 }
 
 @media only screen and (max-width: 770px) {
