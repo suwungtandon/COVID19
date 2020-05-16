@@ -1,10 +1,43 @@
 import React, {useState, useEffect} from 'react';
-import {NativeSelect, FormControl} from '@material-ui/core';
+import {Select, FormControl, Button, makeStyles, withStyles} from '@material-ui/core';
 import {fetchCountries} from '../../api/apiCall';
 
 import styles from './CountryPicker.module.css';
 
-const CountryPicker = ({handleCountryChange}) => {
+const useStyles = makeStyles((theme) => ({
+    button: {
+        position: 'relative',
+        width: '50%',
+        height: 50,
+        marginBottom: '3%',
+    },
+    select: {
+        color: '#FFF',
+        '&:before': {
+            borderColor: '#FFF',
+        },
+        '&:after': {
+            borderColor: '#FFF',
+        }
+    }, 
+    icon: {
+        fill: '#FFF',
+    },
+    select1: {
+        color: '#000',
+    }
+}));
+
+const ColorButton = withStyles((theme) => ({
+    root: {
+       backgroundColor: 'primary',
+      '&:hover': {
+        background: 'linear-gradient(45deg, #23DDD0 30%, #30ED18 90%)',
+      },
+    },
+}))(Button);
+
+const CountryPicker = ({handleCountryChange, country}) => {
     const [fetchedCountries, setFetchedCountries] = useState([]);
 
     useEffect(() => {
@@ -15,15 +48,31 @@ const CountryPicker = ({handleCountryChange}) => {
         fetchApi();
     }, [setFetchedCountries]);
 
+    const classes = useStyles();
+
     return (
-        <FormControl className={styles.formControl}>
-            <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
-                <option value="">Global</option>
-                {fetchedCountries.map((country, index) =>
-                    <option key={index} value={country}>{country}</option>
-                )}
-            </NativeSelect>
-        </FormControl>
+        <ColorButton         
+            variant="contained"
+            color="primary"
+            className={classes.button}
+        >
+            <FormControl className={styles.formControl}>
+                <Select native value={country} 
+                    onChange={(e) => handleCountryChange(e.target.value)} 
+                    className={classes.select}                 
+                    inputProps={{
+                        classes: {
+                            icon: classes.icon,
+                        },
+                    }}
+                >
+                    <option value="" className={classes.select1}>Global</option>
+                    {fetchedCountries.map((country, index) =>
+                        <option key={index} value={country} className={classes.select1}>{country}</option>
+                    )}
+                </Select>
+            </FormControl>
+        </ColorButton>
     );
 }
 

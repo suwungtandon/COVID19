@@ -1,7 +1,8 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import {Card, CardContent, Grid, Typography} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
+import CardLoading from './CardLoading';
 import {cardTypes} from '../../helpers';
 import cx from 'classnames';
 
@@ -31,7 +32,9 @@ const Cards = ({data}) => {
     const classes = useStyles();
 
     if(!data.confirmed) {
-        return "Loading..."
+        return (
+            <CardLoading />
+        );
     }
 
     return (

@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './App.module.css';
-import {Cards, Graph, CountryPicker, Header, SwitchTabs} from './Components';
+import {Cards, Graph, CountryPicker, Header, SwitchTabs, CovidMap, ScrollToTop, Carousel, Faq, Footer} from './Components';
+import {KeyboardArrowUp} from '@material-ui/icons';
+import {Fab, Typography} from '@material-ui/core';
 import {fetchData} from './api/apiCall';
 
 class App extends React.Component {
@@ -29,6 +31,7 @@ class App extends React.Component {
   
     return (
       <div>
+        <div id="back-to-top-anchor" />
         <Header />
         <div className={styles.container}>
           <Cards data={data} />
@@ -36,16 +39,29 @@ class App extends React.Component {
           {
             value === 0 ? (
               <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
-                <CountryPicker handleCountryChange={this.handleCountryChange}/>
-                <Graph data={data} country={country} />
+                <CountryPicker handleCountryChange={this.handleCountryChange} country={country} />
+                <Graph data={data} country={country} value={value} />
               </div>
             ) : (
               <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
-                <p>Hi</p>
+                <CovidMap />
               </div>
             )
           }
         </div>
+        <div>
+          <Typography component="h3" variant="h5" color="textSecondary"></Typography>
+        </div>
+        <Carousel />
+        <Faq />
+        <ScrollToTop>
+          <Fab color="secondary" size="small" aria-label="scroll back to top">
+            <KeyboardArrowUp />
+          </Fab>
+        </ScrollToTop>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     );
   }

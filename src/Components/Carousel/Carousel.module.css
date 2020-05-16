@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: '1%';
+}
+  
+.card {
+    margin: 0 2% !important;
+    height: 200;
+}
+
+@media only screen and (max-width: 770px) {
+    .card {
+        margin-bottom: 2% !important;
+    }
+}
