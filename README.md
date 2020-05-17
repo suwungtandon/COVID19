@@ -1,4 +1,6 @@
 # COVID19
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a1aa61c-42dd-47fc-be48-d61e87193706/deploy-status)](https://app.netlify.com/sites/covidwizard/deploys)
+
 A COVID19 Data Tracker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
