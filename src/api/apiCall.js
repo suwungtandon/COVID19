@@ -57,7 +57,8 @@ const fetchMapData = async () => {
 const fetchNews = async (country) => {
     try {
         if (country.length === 2) {
-            const modifiedUrl = newsUrl + country + '&q=covid&apiKey=54fff705cb2349ae99de265ede17056b';
+            const {NEWS_API} = process.env;
+            const modifiedUrl = newsUrl + country + '&q=covid&apiKey=' + NEWS_API;
             const {data} = await axios.get(modifiedUrl);
 
             return data;
