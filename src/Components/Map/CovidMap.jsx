@@ -102,10 +102,10 @@ class CovidMap extends Component {
   render() {
     return (
       <div className={styles.mapContainer}>
-        <Typography>Hover over markers for info.</Typography>
+        <Typography variant="body2" component="p" color="textPrimary" style={{display: 'flex', justifyContent: 'center'}}>Hover over markers for info.</Typography>
         <div ref={el => this.mapContainer = el} className={styles.map}>
           {
-            this.state.err ? <p style={{display: 'flex', textAlign: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center'}}>Error loading map</p> : <div/>
+            this.state.err ? <p style={{display: 'flex', justifyContent: 'center'}}>Error loading map</p> : <div/>
           }
         </div>
       </div>
