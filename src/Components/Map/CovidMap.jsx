@@ -6,7 +6,7 @@ import {Typography} from '@material-ui/core';
 import styles from './CovidMap.module.css';
 
 const {MAP_API} = process.env;
-mapboxgl.accessToken = 'pk.eyJ1Ijoic25pcGVybGluZTA0NyIsImEiOiJja2FhM3U0a3QwOHA4MnJwOTN6a2NwNXRtIn0.eUT07JgDFwgAny6-Y7lFlA';
+mapboxgl.accessToken = MAP_API;
 
 class CovidMap extends Component { 
   constructor(props) {
