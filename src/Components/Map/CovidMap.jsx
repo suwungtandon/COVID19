@@ -41,7 +41,7 @@ class CovidMap extends Component {
           'properties': {
             'description':
             `<img src=${countryInfo.flag} width="20" height="10" alt='flag'/><strong style={{paddingLeft: 20}}>${countryInfo.iso3}</strong><p>Total:${cases}</p><p>Deaths:${deaths}</p><p>Recovered:${recovered}</p>`,
-            'icon': 'marker'
+            'icon': 'hospital'
           },
           'geometry': {
             'type': 'Point',
