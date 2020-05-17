@@ -1,4 +1,14 @@
 # COVID19
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a1aa61c-42dd-47fc-be48-d61e87193706/deploy-status)](https://app.netlify.com/sites/covidwizard/deploys)
+
+Happy for some pull requests.
+Feel free to leave a star on repo.
+
+Just add your 
+* Mapbox [Mapbox Docs](https://docs.mapbox.com/api/)
+* News [News API](https://newsapi.org/docs/get-started)
+API key's and you're good to go!
+
 A COVID19 Data Tracker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
