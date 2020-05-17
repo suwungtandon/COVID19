@@ -5,8 +5,8 @@ Happy for some pull requests.
 Feel free to leave a star on repo.
 
 Just add your 
-*Linked logo: [![alt text](/wp-smaller.png)](https://www.mapbox.com/ "MapBox") Mapbox [link](https://docs.mapbox.com/api/)
-*Linked logo: [![alt text](/wp-smaller.png)](https://newsapi.org/ "News API") News [link](https://newsapi.org/docs/get-started)
+* Mapbox [Mapbox Docs](https://docs.mapbox.com/api/)
+* News [News API](https://newsapi.org/docs/get-started)
 API key's and you're good to go!
 
 A COVID19 Data Tracker
