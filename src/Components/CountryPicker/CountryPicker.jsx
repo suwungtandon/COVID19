@@ -6,10 +6,8 @@ import styles from './CountryPicker.module.css';
 
 const useStyles = makeStyles((theme) => ({
     button: {
-        position: 'relative',
-        width: '50%',
-        height: 50,
-        marginBottom: '3%',
+        position: 'relative',   
+        alignSelf: 'center',
     },
     select: {
         color: '#FFF',
@@ -68,7 +66,7 @@ const CountryPicker = ({handleCountryChange, country}) => {
                 >
                     <option value="" className={classes.select1}>Global</option>
                     {fetchedCountries.map((country, index) =>
-                        <option key={index} value={country} className={classes.select1}>{country}</option>
+                        <option key={index} value={country.iso2} className={classes.select1}>{country.name}</option>
                     )}
                 </Select>
             </FormControl>

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const apiUrl = 'https://covid19.mathdro.id/api';
+const mapUrl = 'https://corona.lmao.ninja/v2/countries';
+const newsUrl = 'https://newsapi.org/v2/top-headlines?country=';
 
 const fetchData = async (country) => {
     let changableUrl = apiUrl;
@@ -32,14 +34,39 @@ const fetchDailyData = async () => {
     }
 }
 
-const fetchCountries  = async () => {
+const fetchCountries = async () => {
     try {
         const {data: {countries}} = await axios.get(`${apiUrl}/countries`);
 
-        return countries.map((country) => country.name);
+        return countries.map((country) => country);
     } catch (err) {
         console.log(err);
     }
 }
 
-export {fetchData, fetchDailyData, fetchCountries};
+const fetchMapData = async () => {
+    try {
+        const {data} = await axios.get(mapUrl);
+
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const fetchNews = async (country) => {
+    try {
+        if (country.length === 2) {
+            const modifiedUrl = newsUrl + country + '&q=covid&apiKey=54fff705cb2349ae99de265ede17056b';
+            const {data} = await axios.get(modifiedUrl);
+
+            return data;
+        } else {
+            return {};
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export {fetchData, fetchDailyData, fetchCountries, fetchMapData, fetchNews};

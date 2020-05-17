@@ -55,8 +55,8 @@ function Faq() {
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <Typography color="textSecondary" variant="h4" component="h3" style={{margin: '2%'}}>FAQ's</Typography>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '5%'}}>
+      <Typography color="textSecondary" variant="h4" component="h3" style={{marginTop: '5%', marginBottom: '2%'}}>FAQ's</Typography>
       {
           faqTypes.map((value, index) => {
               return (

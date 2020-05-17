@@ -48,7 +48,6 @@ const Carousel  = () => {
                                             {value.body}
                                         </Typography>
                                     </CardContent>
-
                                 </Grid>
                             );
                         })

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import {Cards, Graph, CountryPicker, Header, SwitchTabs, CovidMap, ScrollToTop, Carousel, Faq, Footer} from './Components';
+import {Cards, Graph, Header, SwitchTabs, CovidMap, ScrollToTop, Carousel, Faq, Footer} from './Components';
 import {KeyboardArrowUp} from '@material-ui/icons';
 import {Fab, Typography} from '@material-ui/core';
 import {fetchData} from './api/apiCall';
@@ -14,7 +14,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     const data = await fetchData();
-    this.setState({data: data});
+    this.setState({data});
   }
 
   handleCountryChange = async (country) => {
@@ -39,8 +39,7 @@ class App extends React.Component {
           {
             value === 0 ? (
               <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
-                <CountryPicker handleCountryChange={this.handleCountryChange} country={country} />
-                <Graph data={data} country={country} value={value} />
+                <Graph data={data} country={country} value={value} handleCountryChange={this.handleCountryChange} />
               </div>
             ) : (
               <div className={styles.container} style={{width: '100%', marginBottom: '2%'}}>
