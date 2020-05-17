@@ -67,6 +67,7 @@ const fetchNews = async (country) => {
         }
     } catch (err) {
         console.log(err);
+        return {totalResults: 0}
     }
 }
 
