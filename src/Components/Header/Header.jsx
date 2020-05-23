@@ -20,13 +20,13 @@ const Header = (props) => {
             <AppBar position="sticky" style={{marginBottom: '1%'}}>
                 <Paper className={styles.container}>
                     <div className={styles.header}>
-                        <p className={styles.text}>C</p>
+                        <p className={styles.text}> C </p>
                         <img src={logo} className={styles.logo} alt="logo" />
-                        <p className={styles.text}> COVID-19 </p> 
+                        <p className={styles.text}> VID-19 </p> 
                     </div>
                     <div className={styles.header}>
                         <p className={styles.separator}>|</p>
-                        <p className={styles.text}>Tracker Simplified !!!</p> 
+                        <p className={styles.text}> Global Tracker❗</p> 
                     </div>  
                 </Paper>
             </AppBar>
