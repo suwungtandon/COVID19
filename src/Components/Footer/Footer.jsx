@@ -22,23 +22,23 @@ const Footer = () => {
     return (
         <div style={{backgroundColor: '#3c4245', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div className={classes.root}>
-                <Button href="https://www.github.com/sniperline047">
+                <Button href="https://www.github.com/suwungtandon">
                     <GitHub color="primary" />
                 </Button>
-                <Button href="https://www.github.com/sniperline047/covid19">
+                <Button href="https://www.github.com/suwungtandon/covid19">
                     <Code color="primary" />
                 </Button>
-                <Button href="https://www.linkedin.com/in/ayushsingh-sl047/">
+                <Button href="https://www.linkedin.com/in/">
                     <LinkedIn color="primary" />
                 </Button>
-                <Button href="https://www.instagram.com/asingh047/">
+                <Button href="https://www.instagram.com/">
                     <Instagram color="primary" />
                 </Button>
-                <Button href="https://twitter.com/ayushstar09">
+                <Button href="https://twitter.com/">
                     <Twitter color="primary" />
                 </Button>
             </div>
-            <p style={{margin: '2%', color: '#FFF'}}>© 2020 sniperline047</p>
+            <p style={{margin: '2%', color: '#FFF'}}> ©2020 | @Suwung-Tandon™ </p>
         </div>
     );
 }
